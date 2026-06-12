@@ -1,2 +1,3 @@
 # ecotrack-ai-carbon-footprint-platform
 A clean and premium carbon footprint awareness platform that helps users understand, track, and reduce their emissions through simple lifestyle inputs, personalized insights, and progress tracking.
+EcoTrack AI is a simple, modern carbon footprint awareness web app built for everyday users. It helps people enter basic habits like travel, food, energy, shopping, and waste, then turns that data into a clear carbon footprint score, category breakdown, and personalized reduction suggestions. The goal is to make sustainability easy to understand, easy to track, and easy to act on
