@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Understand your carbon footprint in 90 seconds. See what contributes most and get actionable steps to reduce your impact.">
+  <meta name="theme-color" content="#2D6A4F">
+  <title>Canopy — Know Your Carbon Footprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SCREEN 1: WELCOME                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="screen welcome active" id="screen-welcome">
+      <div class="welcome-badge">
+        <span class="welcome-badge-dot"></span>
+        Science-backed data
+      </div>
+      <div class="welcome-icon-wrap">
+        <div class="welcome-icon">🌿</div>
+        <div class="welcome-icon-ring"></div>
+      </div>
+      <h1>Know your<br><span>carbon footprint</span></h1>
+      <p>Answer 5 simple questions about your lifestyle.<br>See your impact. Understand what drives it. Get steps to reduce it.</p>
+      <div class="tagline">
+        <span>Track</span>
+        <span class="tagline-dot">·</span>
+        <span>Understand</span>
+        <span class="tagline-dot">·</span>
+        <span>Reduce</span>
+      </div>
+      <button class="btn-primary" id="btn-start" onclick="startQuiz()">
+        Calculate My Footprint
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <div class="welcome-stats">
+        <div class="welcome-stat">
+          <strong>90 sec</strong>
+          <span>to complete</span>
+        </div>
+        <div class="welcome-stat-divider"></div>
+        <div class="welcome-stat">
+          <strong>5</strong>
+          <span>questions</span>
+        </div>
+        <div class="welcome-stat-divider"></div>
+        <div class="welcome-stat">
+          <strong>3</strong>
+          <span>action steps</span>
+        </div>
+      </div>
+      <div class="footer">
+        <p>Based on research from IPCC, WRI & Our World in Data</p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SCREEN 2: QUIZ                          -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="screen quiz" id="screen-quiz">
+      <div class="quiz-top-bar">
+        <button class="quiz-back-btn" id="quiz-back-btn" onclick="goBack()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="quiz-progress" id="quiz-progress">
+          <!-- Filled dynamically -->
+        </div>
+        <span class="quiz-counter" id="quiz-counter"></span>
+      </div>
+      <div class="quiz-body">
+        <div class="quiz-header">
+          <span class="quiz-icon" id="quiz-icon"></span>
+          <h2 class="quiz-question" id="quiz-question"></h2>
+        </div>
+        <div class="quiz-options" id="quiz-options">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SCREEN 3: RESULTS                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="screen results" id="screen-results">
+
+      <!-- Score Card -->
+      <div class="score-card animate-in delay-1" id="score-card">
+        <div class="score-label">Your Annual Carbon Footprint</div>
+        <div class="score-number-wrapper">
+          <span class="score-number" id="score-number">0</span>
+          <span class="score-unit">tons CO₂e<span class="score-unit-sub">/year</span></span>
+        </div>
+        <div class="score-grade" id="score-grade"></div>
+        <div class="score-comparison">
+          <div class="comparison-item">
+            <div class="comparison-value" id="comp-you">—</div>
+            <div class="comparison-label">You</div>
+          </div>
+          <div class="comparison-divider"></div>
+          <div class="comparison-item">
+            <div class="comparison-value comparison-avg">8.4</div>
+            <div class="comparison-label">EU Average</div>
+          </div>
+          <div class="comparison-divider"></div>
+          <div class="comparison-item">
+            <div class="comparison-value comparison-target">2.0</div>
+            <div class="comparison-label">2°C Target</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insight Callout -->
+      <div class="insight-callout animate-in delay-2" id="insight-callout">
+        <!-- Filled dynamically -->
+      </div>
+
+      <!-- Breakdown -->
+      <div class="animate-in delay-3">
+        <div class="section-header">
+          <div class="section-icon">📊</div>
+          <h3 class="section-title">Your Breakdown</h3>
+        </div>
+        <p class="section-subtitle">What contributes most to your footprint</p>
+        <div class="breakdown-card" id="breakdown-card">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+
+      <!-- Equivalencies -->
+      <div class="animate-in delay-4">
+        <div class="section-header">
+          <div class="section-icon">💡</div>
+          <h3 class="section-title">What This Means</h3>
+        </div>
+        <p class="section-subtitle">Your footprint in tangible terms</p>
+        <div class="equivalencies" id="equivalencies">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="animate-in delay-5">
+        <div class="section-header">
+          <div class="section-icon">🎯</div>
+          <h3 class="section-title">3 Things You Can Do This Week</h3>
+        </div>
+        <p class="section-subtitle" id="actions-subtitle">Based on your biggest impact area</p>
+        <div class="actions-section" id="actions-section">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+
+      <!-- What If -->
+      <div class="animate-in delay-6">
+        <div class="whatif-card" id="whatif-card">
+          <div class="whatif-eyebrow">Potential Impact</div>
+          <div class="whatif-title">If you follow all 3 actions...</div>
+          <div class="whatif-score-row">
+            <div class="whatif-before">
+              <span class="whatif-before-number" id="whatif-before">—</span>
+              <span class="whatif-before-label">Now</span>
+            </div>
+            <div class="whatif-arrow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div class="whatif-after">
+              <span class="whatif-after-number" id="whatif-score">—</span>
+              <span class="whatif-after-label">Projected</span>
+            </div>
+          </div>
+          <div class="whatif-savings" id="whatif-savings"></div>
+        </div>
+      </div>
+
+      <!-- Restart -->
+      <div class="restart-section animate-in delay-7">
+        <button class="btn-secondary" onclick="restart()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+          Start Over
+        </button>
+      </div>
+
+      <div class="footer">
+        <p>Canopy — Track · Understand · Reduce</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
